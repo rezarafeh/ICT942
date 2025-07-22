@@ -1151,71 +1151,211 @@ const ADMIN_CREDENTIALS = {
 // Project data array
 const projects = [
   {
-    id: 1,
-    title: "Transformer-Based Phishing Email Detection with User-Friendly Alert System",
-    category: "ml",
-    categoryName: "Machine Learning & AI",
-    skillLevel: "intermediate",
-    technologies: ["python", "ml_frameworks"],
-    techNames: ["Python", "ML Frameworks"],
-    description: "A phishing detection system that leverages transformer models.",
-    detailedDescription: "This project explores applying transformer architectures (such as BERT or GPT) to classify and detect phishing emails. Students will fine-tune a pre-trained model on email datasets to capture subtle language cues that differentiate phishing from legitimate communications.",
-    contributionSuggestions: "Consider comparing multiple transformer models, incorporating explainable AI techniques (e.g. attention visualization), and designing a UI that presents both the detection outcome and the reasoning behind it.",
-    prerequisites: ["Basic knowledge of machine learning", "Python programming", "NLP concepts", "Graphical User Interface"],
-    resources: [
-      { name: "Dataset: Enron Email Dataset", url: "https://www.cs.cmu.edu/~enron/" },
-      { name: "Dataset: PhishingCorpus", url: "https://monkey.org/~jose/phishing/" }
+    "id": 1,
+    "title": "AI-Driven Intrusion Detection System Using XGBoost",
+    "category": "ml",
+    "categoryName": "Threat Detection & Response",
+    "skillLevel": "intermediate",
+    "technologies": [
+      "python",
+      "ml_frameworks",
+      "databases"
     ],
-    researchArticles: [
-      { name: "An improved transformer-based model for detecting phishing, spam and ham emails", url: "https://onlinelibrary.wiley.com/doi/full/10.1002/spy2.402" }
+    "techNames": [
+      "Python",
+      "XGBoost",
+      "SQL"
     ],
-    estimatedTime: "3-4 months",
-    complexity: "Medium",
-    uiComponent: true
+    "description": "Detect network intrusions using supervised ML algorithms.",
+    "detailedDescription": "Design a machine learning model using XGBoost to detect potential intrusions from network traffic logs. Evaluate performance using classification metrics and explore explainability with SHAP.",
+    "contributionSuggestions": "Enhance model performance with feature engineering and compare with other tree-based algorithms. Visualize detection in a basic web interface.",
+    "prerequisites": [
+      "Python programming",
+      "Machine learning basics",
+      "Network protocols"
+    ],
+    "resources": [
+      {
+        "name": "NSL-KDD Dataset",
+        "url": "https://www.unb.ca/cic/datasets/nsl.html"
+      }
+    ],
+    "researchArticles": [
+      {
+        "name": "Intrusion Detection Using Machine Learning",
+        "url": "https://ieeexplore.ieee.org/document/8370782"
+      }
+    ],
+    "estimatedTime": "2-3 months",
+    "complexity": "Medium",
+    "uiComponent": true
   },
   {
-    id: 2,
-    title: "IoT Botnet Detection and Mitigation Framework",
-    category: "iot",
-    categoryName: "IoT & Edge Security",
-    skillLevel: "advanced",
-    technologies: ["python", "ml_frameworks", "databases"],
-    techNames: ["Python", "ML Frameworks", "Databases"],
-    description: "Detect and mitigate botnet activity in IoT networks.",
-    detailedDescription: "This project focuses on analyzing network traffic from IoT devices to detect coordinated botnet behavior. Students will design and test machine learning models to identify botnet signatures and develop automated response strategies to isolate compromised devices.",
-    contributionSuggestions: "Improve feature extraction from network data, experiment with various classification models, and integrate real-time mitigation mechanisms in a simulated IoT environment.",
-    prerequisites: ["Network security concepts", "Python programming", "Machine learning basics"],
-    resources: [
-      { name: "Dataset: N-BaIoT", url: "https://archive.ics.uci.edu/ml/datasets/detection_of_IoT_botnet_attacks_N_BaIoT" }
+    "id": 2,
+    "title": "Phishing URL Detection Using NLP Techniques",
+    "category": "nlp",
+    "categoryName": "Social Engineering & Awareness",
+    "skillLevel": "beginner",
+    "technologies": [
+      "python",
+      "javascript"
     ],
-    researchArticles: [
-      { name: "Botnet Detection in IoT Networks: Challenges and Solutions", url: "https://www.example.com/research/iot-botnet" }
+    "techNames": [
+      "Python",
+      "Regex",
+      "Scikit-learn"
     ],
-    estimatedTime: "4-5 months",
-    complexity: "High",
-    uiComponent: true
+    "description": "Detect phishing URLs based on textual patterns and features.",
+    "detailedDescription": "Build a model that classifies URLs as phishing or safe using natural language features. Incorporate real-time validation and blacklist checking.",
+    "contributionSuggestions": "Include a browser extension or dashboard that checks URLs in real-time.",
+    "prerequisites": [
+      "Python basics",
+      "Regex",
+      "Text processing"
+    ],
+    "resources": [
+      {
+        "name": "Phishing URL Dataset",
+        "url": "https://www.kaggle.com/datasets/sid321axn/phishing-site-url-dataset"
+      }
+    ],
+    "researchArticles": [
+      {
+        "name": "URL-Based Phishing Detection Using NLP",
+        "url": "https://www.sciencedirect.com/science/article/pii/S1877050921000410"
+      }
+    ],
+    "estimatedTime": "1-2 months",
+    "complexity": "Low",
+    "uiComponent": true
   },
   {
-    id: 3,
-    title: "Blockchain-Based Data Integrity Verification System",
-    category: "blockchain",
-    categoryName: "Blockchain & Cryptography",
-    skillLevel: "intermediate",
-    technologies: ["javascript", "databases"],
-    techNames: ["JavaScript/Web", "Databases"],
-    description: "Ensure data integrity using blockchain.",
-    detailedDescription: "In this project, students build a decentralized ledger using blockchain technology to record data transactions and modifications. The system provides a tamper-proof audit trail for sensitive data.",
-    contributionSuggestions: "Experiment with different blockchain platforms (Ethereum, Hyperledger), develop secure smart contracts, and analyze performance under various load scenarios.",
-    prerequisites: ["Basic blockchain knowledge", "Web development", "Cryptography basics"],
-    resources: [
-      { name: "Ethereum Documentation", url: "https://ethereum.org/developers/" }
+    "id": 3,
+    "title": "Ransomware Behavior Analysis and Detection",
+    "category": "malware",
+    "categoryName": "Malware Analysis",
+    "skillLevel": "advanced",
+    "technologies": [
+      "python",
+      "ml_frameworks",
+      "cloud"
     ],
-    researchArticles: [
-      { name: "Blockchain for Data Integrity Verification", url: "https://www.example.com/research/blockchain-integrity" }
+    "techNames": [
+      "Python",
+      "Dynamic Analysis Tools",
+      "Cloud Sandbox"
     ],
-    estimatedTime: "3-4 months",
-    complexity: "Medium",
-    uiComponent: true
+    "description": "Analyze and detect ransomware using behavioral signatures.",
+    "detailedDescription": "Capture and analyze system behavior during ransomware execution in a controlled environment. Extract features to train models that classify or flag ransomware activity.",
+    "contributionSuggestions": "Build an isolated detection tool using Cuckoo Sandbox or integrate behavior signatures into EDR.",
+    "prerequisites": [
+      "Cybersecurity fundamentals",
+      "Python scripting",
+      "Virtual machines"
+    ],
+    "resources": [
+      {
+        "name": "Ransomware Dataset",
+        "url": "https://ransomwaretracker.abuse.ch/"
+      },
+      {
+        "name": "Cuckoo Sandbox",
+        "url": "https://cuckoosandbox.org/"
+      }
+    ],
+    "researchArticles": [
+      {
+        "name": "A Machine Learning Approach to Detect Ransomware",
+        "url": "https://ieeexplore.ieee.org/document/8370796"
+      }
+    ],
+    "estimatedTime": "3-4 months",
+    "complexity": "High",
+    "uiComponent": true
+  },
+  {
+    "id": 4,
+    "title": "Blockchain-Based Access Control System",
+    "category": "blockchain",
+    "categoryName": "Access Management",
+    "skillLevel": "intermediate",
+    "technologies": [
+      "javascript",
+      "databases",
+      "blockchain"
+    ],
+    "techNames": [
+      "JavaScript",
+      "Solidity",
+      "Web3"
+    ],
+    "description": "Implement decentralized access control using blockchain smart contracts.",
+    "detailedDescription": "Create a blockchain-based access control system where roles and permissions are governed by smart contracts. Log access attempts immutably.",
+    "contributionSuggestions": "Integrate biometric or multi-factor authentication and audit trails.",
+    "prerequisites": [
+      "Blockchain basics",
+      "Web development",
+      "Access control models"
+    ],
+    "resources": [
+      {
+        "name": "Ethereum Dev Docs",
+        "url": "https://ethereum.org/en/developers/docs/"
+      }
+    ],
+    "researchArticles": [
+      {
+        "name": "Smart Contract-Based Access Control",
+        "url": "https://link.springer.com/article/10.1007/s10207-021-00579-w"
+      }
+    ],
+    "estimatedTime": "3-4 months",
+    "complexity": "Medium",
+    "uiComponent": true
+  },
+  {
+    "id": 5,
+    "title": "Real-Time Threat Intelligence Aggregator",
+    "category": "threat",
+    "categoryName": "Threat Intelligence",
+    "skillLevel": "advanced",
+    "technologies": [
+      "python",
+      "cloud",
+      "databases"
+    ],
+    "techNames": [
+      "Python",
+      "API Integration",
+      "Elastic Stack"
+    ],
+    "description": "Aggregate and visualize threat intel feeds in real-time.",
+    "detailedDescription": "Design a dashboard that aggregates data from public threat intelligence feeds (e.g., AlienVault OTX, AbuseIPDB), stores IOCs, and displays alerts using Elasticsearch and Kibana.",
+    "contributionSuggestions": "Automate enrichment using VirusTotal or Shodan APIs.",
+    "prerequisites": [
+      "Python",
+      "API handling",
+      "SIEM basics"
+    ],
+    "resources": [
+      {
+        "name": "AlienVault OTX",
+        "url": "https://otx.alienvault.com/"
+      },
+      {
+        "name": "AbuseIPDB",
+        "url": "https://www.abuseipdb.com/"
+      }
+    ],
+    "researchArticles": [
+      {
+        "name": "Threat Intelligence Sharing and Visualization",
+        "url": "https://ieeexplore.ieee.org/document/8266044"
+      }
+    ],
+    "estimatedTime": "3-5 months",
+    "complexity": "High",
+    "uiComponent": true
   }
 ];
 
