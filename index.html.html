@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybersecurity Project Matchmaker</title>
+    <style>
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+  }
+  
+  /* Enhanced Banner/Header Styles */
+  header {
+    background: linear-gradient(135deg, #059669, #047857);
+    color: white;
+    padding: 1.5rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  header h1 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+  
+  header h1 svg {
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+    margin-right: 0.75rem;
+  }
+  
+  header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 700px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Admin controls in header */
+  .admin-controls {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .admin-status {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .admin-btn {
+    background: rgba(255, 255, 255, 0.9);
+    color: #1e40af;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .admin-btn:hover {
+    background: white;
+    transform: translateY(-1px);
+  }
+  
+  /* Enhanced Navigation Tabs */
+  .nav-tabs {
+    background-color: white;
+    padding: 0 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .nav-tabs ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .nav-tabs li {
+    margin: 0;
+    position: relative;
+  }
+  
+  .nav-tabs a {
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    display: inline-block;
+    color: #4b5563;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+    border: none;
+    position: relative;
+  }
+  
+  .nav-tabs a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #059669;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-tabs a:hover {
+    color: #059669;
+    background-color: transparent;
+    border: none;
+  }
+  
+  .nav-tabs a:hover::after {
+    width: 100%;
+  }
+  
+  .nav-tabs a.active {
+    color: #059669;
+    background-color: transparent;
+    border: none;
+  }
+  
+  .nav-tabs a.active::after {
+    width: 100%;
+  }
+  
+  /* Tab indicator effect */
+  .nav-tabs a.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #059669;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-tabs a.active:hover::before {
+    opacity: 1;
+  }
+  
+  /* Projects View */
+  .main-content {
+    display: flex;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: white;
+    padding: 1.5rem;
+    margin-right: 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar h2 svg {
+    margin-right: 0.5rem;
+  }
+  
+  .filter-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .filter-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .filter-option label {
+    margin-left: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #374151;
+  }
+
+  .filter-option .category-icon {
+    margin-right: 0.5rem;
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  .project-list {
+    flex: 1;
+  }
+  
+  .list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .sort-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .sort-btn {
+    background-color: #e0e7ff;
+    color: #3b82f6;
+    border: none;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  
+  .sort-btn:hover {
+    background-color: #c7d2fe;
+  }
+  
+  .project-card {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .project-card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-content {
+    padding: 1rem;
+  }
+  
+  .project-title {
+    color: #059669;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .project-description {
+    color: #666;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .tag {
+    background-color: #f3f4f6;
+    color: #4b5563;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+  
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .metadata {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .meta-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .meta-tag.resources {
+    background-color: #dbeafe;
+    color: #1e40af;
+  }
+  
+  .meta-tag.beginner {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+  
+  .meta-tag.intermediate {
+    background-color: #fef3c7;
+    color: #92400e;
+  }
+  
+  .meta-tag.advanced {
+    background-color: #fee2e2;
+    color: #b91c1c;
+  }
+  
+  .view-btn {
+    background-color: #059669;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+  }
+  
+  .view-btn:hover {
+    background-color: #047857;
+  }
+  
+  .project-details {
+    background-color: white;
+    border-radius: 5px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
+  
+  .details-title {
+    font-size: 1.5rem;
+    color: #059669;
+  }
+  
+  .back-btn {
+    background-color: #e5e7eb;
+    color: #374151;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .back-btn:hover {
+    background-color: #d1d5db;
+  }
+  
+  .project-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat-card {
+    background-color: #ecfdf5;
+    padding: 0.75rem;
+    border-radius: 4px;
+  }
+  
+  .stat-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  
+  .details-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .details-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .details-section ul {
+    list-style-position: inside;
+    margin-left: 1rem;
+  }
+  
+  .select-project-btn {
+    background-color: #10b981;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .select-project-btn:hover {
+    background-color: #059669;
+  }
+  
+  .select-project-btn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s;
+    pointer-events: none;
+  }
+  
+  .select-project-btn:hover::after {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+  
+  .no-projects {
+    background-color: white;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .no-projects p {
+    color: #6b7280;
+    font-size: 1.1rem;
+  }
+  
+  footer {
+    background-color: #1f2937;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  footer p {
+    font-size: 0.875rem;
+  }
+  
+  /* Group Submissions View */
+  .group-submissions {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+
+  .submissions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .group-card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .group-card ul {
+    margin: 0.5rem 0 1rem 1.5rem;
+    padding: 0;
+  }
+
+  .group-card li {
+    margin-bottom: 0.25rem;
+    color: #374151;
+  }
+
+  .group-card li strong {
+    color: #111827;
+  }
+
+  .group-card-admin {
+    background-color: #fef3c7;
+    border-color: #f59e0b;
+  }
+  
+  /* Export Button */
+  .export-btn {
+    background-color: #059669;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  
+  .export-btn:hover {
+    background-color: #047857;
+  }
+  
+  /* Enhanced Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: slideDown 0.4s ease;
+  }
+  
+  @keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  .close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: #999;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .close:hover {
+    color: #059669;
+  }
+  
+  /* Form Header */
+  .modal-content h2 {
+    color: #059669;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 15px;
+  }
+  
+  /* Form Layout */
+  #group-form, #admin-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  #group-form div, #admin-login-form div {
+    margin-bottom: 0;
+  }
+  
+  #group-form input, #admin-login-form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  #group-form input:focus, #admin-login-form input:focus {
+    outline: none;
+    border-color: #059669;
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+  }
+  
+  #group-form input:hover:not(:focus), #admin-login-form input:hover:not(:focus) {
+    border-color: #bbb;
+  }
+  
+  #group-form input[readonly] {
+    background-color: #f9fafb;
+    border-color: #ddd;
+    color: #666;
+  }
+  
+  /* Project Name Field */
+  #group-form div:first-child {
+    margin-bottom: 20px;
+  }
+  
+  /* Group Members Section */
+  .group-members-heading {
+    margin-top: 10px;
+    margin-bottom: 5px !important;
+  }
+  
+  .group-members-heading label {
+    font-weight: bold;
+    color: #374151;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 8px;
+  }
+  
+  .group-member {
+    background-color: #f9fafb;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 12px !important;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+  }
+  
+  .group-member:first-of-type {
+    border-left: 4px solid #059669;
+    background-color: #ecfdf5;
+  }
+  
+  .group-member label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #4b5563;
+  }
+  
+  /* Required Field */
+  .required-field::after {
+    content: "*";
+    color: #ef4444;
+    margin-left: 4px;
+  }
+  
+  /* Submit Button */
+  #group-form button, #admin-login-form button {
+    background-color: #059669;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.1s;
+    display: block;
+    width: 100%;
+  }
+  
+  #group-form button:hover, #admin-login-form button:hover {
+    background-color: #047857;
+  }
+  
+  #group-form button:active, #admin-login-form button:active {
+    transform: scale(0.98);
+  }
+  
+  /* Helper Text */
+  .helper-text {
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-top: 3px;
+  }
+  
+  /* First member highlight - required */
+  #member1-name, #member1-id {
+    border-color: #059669;
+  }
+  
+  /* Header Icon Animation */
+  .header-icon {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  /* SVG styles for tabs */
+  .nav-tabs a svg {
+    transition: transform 0.3s ease;
+  }
+  
+  .nav-tabs a:hover svg,
+  .nav-tabs a.active svg {
+    transform: scale(1.1);
+  }
+  
+  /* Loading indicator */
+  .loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+  }
+  
+  .loading::after {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    border: 3px solid #ddd;
+    border-top-color: #059669;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Error message */
+  .error {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+  }
+  
+  /* Delete button */
+  .delete-btn {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }
+  
+  .delete-btn:hover {
+    background-color: #dc2626;
+  }
+  
+  .delete-btn:disabled {
+    background-color: #f87171;
+    cursor: not-allowed;
+  }
+
+  .delete-btn.admin-only {
+    background-color: #94a3b8;
+    cursor: not-allowed;
+    position: relative;
+  }
+
+  .delete-btn.admin-only:hover {
+    background-color: #94a3b8;
+  }
+
+  .delete-btn.admin-only::after {
+    content: "Admin Only";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #374151;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .delete-btn.admin-only:hover::after {
+    opacity: 1;
+  }
+
+  /* Success message */
+  .success {
+    background-color: #dcfce7;
+    color: #166534;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+  }
+  
+  /* Project availability indicators */
+  .project-card.taken {
+    opacity: 0.6;
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+  }
+
+  .project-card.taken .project-title {
+    color: #6b7280;
+  }
+
+  .project-card.taken .view-btn {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+  }
+
+  .project-card.taken .view-btn:hover {
+    background-color: #9ca3af;
+  }
+
+  .project-taken-badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: #ef4444;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+    
+    .sidebar {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 1.5rem;
+    }
+    
+    .project-stats {
+      grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+      margin: 10% auto;
+      padding: 20px;
+      max-width: 90%;
+    }
+    
+    .group-member {
+      grid-template-columns: 1fr;
+      grid-gap: 10px;
+    }
+
+    .admin-controls {
+      position: static;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+
+    .submissions-header {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: stretch;
+    }
+  }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="admin-controls">
+          <div id="admin-status" class="admin-status">
+            <span id="admin-indicator">👤</span>
+            <span id="admin-text">Student</span>
+          </div>
+          <button id="admin-toggle" class="admin-btn" onclick="toggleAdminMode()">Admin Login</button>
+        </div>
+        <h1>
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" 
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="header-icon">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+          Cybersecurity Project Matchmaker
+        </h1>
+        <p>Find the perfect cybersecurity project for your skills and interests</p>
+      </div>
+    </header>
+    
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <ul>
+        <li><a href="#" id="tab-projects" class="active">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" 
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+            style="margin-right: 6px; vertical-align: -3px;">
+            <path d="M3 3h7v7H3z"></path>
+            <path d="M14 3h7v7h-7z"></path>
+            <path d="M14 14h7v7h-7z"></path>
+            <path d="M3 14h7v7H3z"></path>
+          </svg>
+          Projects
+        </a></li>
+        <li><a href="#" id="tab-submissions">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" 
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+            style="margin-right: 6px; vertical-align: -3px;">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          Group Information
+        </a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div id="main-content">
+        <!-- Dynamic content will be injected here by script.js -->
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>© 2025 Cybersecurity Project Matchmaker | Designed by Dr Ashraf Uddin</p>
+      </div>
+    </footer>
+
+    <!-- Modal Group Form -->
+    <div id="group-form-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Group Details Submission Form</h2>
+        <form id="group-form">
+          <div>
+            <label for="project-name" class="required-field">Project Name:</label>
+            <input type="text" id="project-name" name="projectName" required readonly />
+            <div class="helper-text">This field is automatically filled based on your selection.</div>
+          </div>
+          
+          <div class="group-members-heading">
+            <label>Group Members Information</label>
+          </div>
+          
+          <div class="group-member">
+            <div>
+              <label for="member1-name" class="required-field">Member 1 Name:</label>
+              <input type="text" id="member1-name" name="member1Name" required placeholder="Primary contact person" />
+            </div>
+            <div>
+              <label for="member1-id" class="required-field">Member 1 ID:</label>
+              <input type="text" id="member1-id" name="member1Id" required placeholder="e.g., S12345" />
+            </div>
+          </div>
+          
+          <div class="group-member">
+            <div>
+              <label for="member2-name">Member 2 Name:</label>
+              <input type="text" id="member2-name" name="member2Name" placeholder="Optional" />
+            </div>
+            <div>
+              <label for="member2-id">Member 2 ID:</label>
+              <input type="text" id="member2-id" name="member2Id" placeholder="Optional" />
+            </div>
+          </div>
+          
+          <div class="group-member">
+            <div>
+              <label for="member3-name">Member 3 Name:</label>
+              <input type="text" id="member3-name" name="member3Name" placeholder="Optional" />
+            </div>
+            <div>
+              <label for="member3-id">Member 3 ID:</label>
+              <input type="text" id="member3-id" name="member3Id" placeholder="Optional" />
+            </div>
+          </div>
+          
+          <div class="group-member">
+            <div>
+              <label for="member4-name">Member 4 Name:</label>
+              <input type="text" id="member4-name" name="member4Name" placeholder="Optional" />
+            </div>
+            <div>
+              <label for="member4-id">Member 4 ID:</label>
+              <input type="text" id="member4-id" name="member4Id" placeholder="Optional" />
+            </div>
+          </div>
+          
+          <div class="group-member">
+            <div>
+              <label for="member5-name">Member 5 Name:</label>
+              <input type="text" id="member5-name" name="member5Name" placeholder="Optional" />
+            </div>
+            <div>
+              <label for="member5-id">Member 5 ID:</label>
+              <input type="text" id="member5-id" name="member5Id" placeholder="Optional" />
+            </div>
+          </div>
+          
+          <button type="submit">Submit Group Registration</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="admin-login-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeAdminModal()">&times;</span>
+        <h2>Admin Login</h2>
+        <form id="admin-login-form">
+          <div>
+            <label for="admin-username" class="required-field">Username:</label>
+            <input type="text" id="admin-username" name="username" required placeholder="Enter admin username" />
+          </div>
+          <div>
+            <label for="admin-password" class="required-field">Password:</label>
+            <input type="password" id="admin-password" name="password" required placeholder="Enter admin password" />
+          </div>
+          <div id="admin-login-error" class="error" style="display: none;"></div>
+          <button type="submit">Login as Admin</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics-compat.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script>
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+          apiKey: "AIzaSyBedarjp3pyr6ZGLKoYBCF1ePZSYLedx50",
+          authDomain: "ict942.firebaseapp.com",
+          projectId: "ict942",
+          storageBucket: "ict942.firebasestorage.app",
+          messagingSenderId: "672169317168",
+          appId: "1:672169317168:web:0d9fbaa524a8da6fd0eef5"
+      };
+      
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+      const analytics = firebase.analytics();
+    </script>
+
+    <script>
+/**************************************
+ * Global Data and Variables
+ **************************************/
+// Load previously saved group submissions (if any)
+let groupSubmissions = JSON.parse(sessionStorage.getItem("groupSubmissions")) || [];
+
+// Admin authentication state
+let isAdminAuthenticated = sessionStorage.getItem("adminAuthenticated") === "true";
+
+// Admin credentials (in production, this should be handled server-side)
+const ADMIN_CREDENTIALS = {
+  username: "admin",
+  password: "admin123" // Change this to a secure password
+};
+
+// Project data array
+const projects = [
+  {
+    id: 1,
+    title: "Transformer-Based Phishing Email Detection with User-Friendly Alert System",
+    category: "ml",
+    categoryName: "Machine Learning & AI",
+    skillLevel: "intermediate",
+    technologies: ["python", "ml_frameworks"],
+    techNames: ["Python", "ML Frameworks"],
+    description: "A phishing detection system that leverages transformer models.",
+    detailedDescription: "This project explores applying transformer architectures (such as BERT or GPT) to classify and detect phishing emails. Students will fine-tune a pre-trained model on email datasets to capture subtle language cues that differentiate phishing from legitimate communications.",
+    contributionSuggestions: "Consider comparing multiple transformer models, incorporating explainable AI techniques (e.g. attention visualization), and designing a UI that presents both the detection outcome and the reasoning behind it.",
+    prerequisites: ["Basic knowledge of machine learning", "Python programming", "NLP concepts", "Graphical User Interface"],
+    resources: [
+      { name: "Dataset: Enron Email Dataset", url: "https://www.cs.cmu.edu/~enron/" },
+      { name: "Dataset: PhishingCorpus", url: "https://monkey.org/~jose/phishing/" }
+    ],
+    researchArticles: [
+      { name: "An improved transformer-based model for detecting phishing, spam and ham emails", url: "https://onlinelibrary.wiley.com/doi/full/10.1002/spy2.402" }
+    ],
+    estimatedTime: "3-4 months",
+    complexity: "Medium",
+    uiComponent: true
+  },
+  {
+    id: 2,
+    title: "IoT Botnet Detection and Mitigation Framework",
+    category: "iot",
+    categoryName: "IoT & Edge Security",
+    skillLevel: "advanced",
+    technologies: ["python", "ml_frameworks", "databases"],
+    techNames: ["Python", "ML Frameworks", "Databases"],
+    description: "Detect and mitigate botnet activity in IoT networks.",
+    detailedDescription: "This project focuses on analyzing network traffic from IoT devices to detect coordinated botnet behavior. Students will design and test machine learning models to identify botnet signatures and develop automated response strategies to isolate compromised devices.",
+    contributionSuggestions: "Improve feature extraction from network data, experiment with various classification models, and integrate real-time mitigation mechanisms in a simulated IoT environment.",
+    prerequisites: ["Network security concepts", "Python programming", "Machine learning basics"],
+    resources: [
+      { name: "Dataset: N-BaIoT", url: "https://archive.ics.uci.edu/ml/datasets/detection_of_IoT_botnet_attacks_N_BaIoT" }
+    ],
+    researchArticles: [
+      { name: "Botnet Detection in IoT Networks: Challenges and Solutions", url: "https://www.example.com/research/iot-botnet" }
+    ],
+    estimatedTime: "4-5 months",
+    complexity: "High",
+    uiComponent: true
+  },
+  {
+    id: 3,
+    title: "Blockchain-Based Data Integrity Verification System",
+    category: "blockchain",
+    categoryName: "Blockchain & Cryptography",
+    skillLevel: "intermediate",
+    technologies: ["javascript", "databases"],
+    techNames: ["JavaScript/Web", "Databases"],
+    description: "Ensure data integrity using blockchain.",
+    detailedDescription: "In this project, students build a decentralized ledger using blockchain technology to record data transactions and modifications. The system provides a tamper-proof audit trail for sensitive data.",
+    contributionSuggestions: "Experiment with different blockchain platforms (Ethereum, Hyperledger), develop secure smart contracts, and analyze performance under various load scenarios.",
+    prerequisites: ["Basic blockchain knowledge", "Web development", "Cryptography basics"],
+    resources: [
+      { name: "Ethereum Documentation", url: "https://ethereum.org/developers/" }
+    ],
+    researchArticles: [
+      { name: "Blockchain for Data Integrity Verification", url: "https://www.example.com/research/blockchain-integrity" }
+    ],
+    estimatedTime: "3-4 months",
+    complexity: "Medium",
+    uiComponent: true
+  }
+];
+
+const categoriesList = [
+  { id: 'ml', name: 'Machine Learning & AI', icon: '🤖' },
+  { id: 'iot', name: 'IoT & Edge Security', icon: '📱' },
+  { id: 'blockchain', name: 'Blockchain & Cryptography', icon: '🔒' },
+  { id: 'network', name: 'Network & Cloud Security', icon: '☁️' }
+];
+
+const skillLevelsList = [
+  { id: "beginner", name: "Beginner" },
+  { id: "intermediate", name: "Intermediate" },
+  { id: "advanced", name: "Advanced" }
+];
+
+const technologiesList = [
+  { id: "python", name: "Python" },
+  { id: "ml_frameworks", name: "ML Frameworks" },
+  { id: "javascript", name: "JavaScript/Web" },
+  { id: "cloud", name: "Cloud Services" },
+  { id: "databases", name: "Databases" },
+  { id: "mobile_dev", name: "Mobile Development" }
+];
+
+// Variables for filtering and selection
+let selectedCategories = [];
+let selectedSkillLevels = [];
+let selectedTechnologies = [];
+let searchTerm = "";
+let selectedProject = null;
+
+/**************************************
+ * Admin Authentication Functions
+ **************************************/
+function updateAdminUI() {
+  const indicator = document.getElementById("admin-indicator");
+  const text = document.getElementById("admin-text");
+  const button = document.getElementById("admin-toggle");
+  
+  if (isAdminAuthenticated) {
+    indicator.textContent = "🔐";
+    text.textContent = "Admin";
+    button.textContent = "Logout";
+    button.onclick = logoutAdmin;
+    document.getElementById("admin-status").style.background = "rgba(34, 197, 94, 0.2)";
+  } else {
+    indicator.textContent = "👤";
+    text.textContent = "Student";
+    button.textContent = "Admin Login";
+    button.onclick = toggleAdminMode;
+    document.getElementById("admin-status").style.background = "rgba(255, 255, 255, 0.2)";
+  }
+}
+
+function toggleAdminMode() {
+  document.getElementById("admin-login-modal").style.display = "block";
+}
+
+function closeAdminModal() {
+  document.getElementById("admin-login-modal").style.display = "none";
+  document.getElementById("admin-login-form").reset();
+  document.getElementById("admin-login-error").style.display = "none";
+}
+
+function logoutAdmin() {
+  isAdminAuthenticated = false;
+  sessionStorage.removeItem("adminAuthenticated");
+  updateAdminUI();
+  
+  // Refresh submissions view if currently viewing it
+  if (document.getElementById("tab-submissions").classList.contains("active")) {
+    renderSubmissionsView();
+  }
+  
+  showMessage("Logged out successfully", "success");
+}
+
+function showMessage(message, type = "error") {
+  const messageDiv = document.createElement("div");
+  messageDiv.className = type;
+  messageDiv.textContent = message;
+  messageDiv.style.position = "fixed";
+  messageDiv.style.top = "20px";
+  messageDiv.style.right = "20px";
+  messageDiv.style.zIndex = "9999";
+  messageDiv.style.padding = "10px 20px";
+  messageDiv.style.borderRadius = "4px";
+  messageDiv.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+  
+  document.body.appendChild(messageDiv);
+  
+  setTimeout(() => {
+    if (messageDiv.parentNode) {
+      messageDiv.parentNode.removeChild(messageDiv);
+    }
+  }, 3000);
+}
+
+/**************************************
+ * Project Availability Functions
+ **************************************/
+function getSelectedProjects() {
+  return groupSubmissions.map(submission => submission.projectName);
+}
+
+function isProjectAvailable(projectTitle) {
+  const selectedProjects = getSelectedProjects();
+  return !selectedProjects.includes(projectTitle);
+}
+
+function getAvailableProjects() {
+  const selectedProjects = getSelectedProjects();
+  return projects.filter(project => !selectedProjects.includes(project.title));
+}
+function saveSubmissionToFirebase(submission) {
+  return db.collection("groupSubmissions").add(submission);
+}
+
+function loadSubmissionsFromFirebase() {
+  return db.collection("groupSubmissions").orderBy("timestamp", "desc").get()
+    .then((querySnapshot) => {
+      const submissions = [];
+      querySnapshot.forEach((doc) => {
+        submissions.push({
+          id: doc.id,
+          ...doc.data()
+        });
+      });
+      return submissions;
+    });
+}
+
+function deleteSubmissionFromFirebase(submissionId) {
+  return db.collection("groupSubmissions").doc(submissionId).delete();
+}
+
+/**************************************
+ * Initialization and Tab Switching
+ **************************************/
+document.addEventListener("DOMContentLoaded", function () {
+  // Update admin UI on page load
+  updateAdminUI();
+  
+  // Set up navigation tabs
+  document.getElementById("tab-projects").addEventListener("click", function (e) {
+    e.preventDefault();
+    setActiveTab("tab-projects");
+    renderProjectsView();
+  });
+  document.getElementById("tab-submissions").addEventListener("click", function (e) {
+    e.preventDefault();
+    setActiveTab("tab-submissions");
+    renderSubmissionsView();
+  });
+
+  // Admin login form submission
+  document.getElementById("admin-login-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const username = document.getElementById("admin-username").value;
+    const password = document.getElementById("admin-password").value;
+    
+    if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+      isAdminAuthenticated = true;
+      sessionStorage.setItem("adminAuthenticated", "true");
+      updateAdminUI();
+      closeAdminModal();
+      showMessage("Admin login successful!", "success");
+      
+      // Refresh submissions view if currently viewing it
+      if (document.getElementById("tab-submissions").classList.contains("active")) {
+        renderSubmissionsView();
+      }
+    } else {
+      document.getElementById("admin-login-error").textContent = "Invalid username or password";
+      document.getElementById("admin-login-error").style.display = "block";
+    }
+  });
+
+  // Start with the Projects view
+  renderProjectsView();
+});
+
+function setActiveTab(tabId) {
+  document.querySelectorAll(".nav-tabs a").forEach(function (link) {
+    link.classList.remove("active");
+  });
+  document.getElementById(tabId).classList.add("active");
+}
+
+/**************************************
+ * Render Views
+ **************************************/
+function renderProjectsView() {
+  const mainContent = document.getElementById("main-content");
+  mainContent.innerHTML = `
+    <div class="main-content">
+      <div class="sidebar" id="sidebar-filters">
+        <div class="filter-section">
+          <h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            Search
+          </h2>
+          <input type="text" id="search-input" placeholder="Search projects..." />
+        </div>
+        <div class="filter-section">
+          <h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+            Categories
+          </h2>
+          <div class="filter-options" id="category-filters"></div>
+        </div>
+        <div class="filter-section">
+          <h2>Skill Level</h2>
+          <div class="filter-options" id="skill-filters"></div>
+        </div>
+        <div class="filter-section">
+          <h2>Technologies</h2>
+          <div class="filter-options" id="tech-filters"></div>
+        </div>
+      </div>
+      <div class="project-list" id="project-container"></div>
+    </div>
+  `;
+  initProjects();
+}
+
+function renderSubmissionsView() {
+  const mainContent = document.getElementById("main-content");
+  mainContent.innerHTML = `
+    <div class="group-submissions">
+      <div class="submissions-header">
+        <h2>Group Submissions</h2>
+        <button class="export-btn" onclick="exportSubmissions()">Export as CSV</button>
+      </div>
+      <div id="submissions-container">
+        <div class="loading">Loading submissions...</div>
+      </div>
+    </div>
+  `;
+
+  // Load submissions from Firebase
+  loadSubmissionsFromFirebase()
+    .then((submissions) => {
+      groupSubmissions = submissions;
+      sessionStorage.setItem("groupSubmissions", JSON.stringify(groupSubmissions));
+      
+      const container = document.getElementById("submissions-container");
+      
+      if (submissions.length === 0) {
+        container.innerHTML = `<p>No group submissions yet.</p>`;
+      } else {
+        let html = '';
+        submissions.forEach(function (group, index) {
+          const cardClass = isAdminAuthenticated ? "group-card group-card-admin" : "group-card";
+          html += `<div class="${cardClass}">
+                    <h3>Submission ${index + 1}</h3>
+                    <p><strong>Project Name:</strong> ${group.projectName}</p>
+                    <p><strong>Group Name:</strong> ${group.groupName || `Group for ${group.projectName}`}</p>
+                    <div><strong>Group Members:</strong></div>
+                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">`;
+          
+          if (group.groupMembers && group.groupMembers.length > 0) {
+            group.groupMembers.forEach(function (member, memberIndex) {
+              if (member && member.name && member.studentId) {
+                html += `<li style="margin-bottom: 0.25rem;"><strong>${member.name}</strong> (ID: ${member.studentId})</li>`;
+              }
+            });
+          } else {
+            html += `<li style="color: #666; font-style: italic;">No members listed</li>`;
+          }
+          
+          html += `</ul>
+                    <p><small>Submitted on: ${new Date(group.timestamp).toLocaleString()}</small></p>`;
+          
+          if (isAdminAuthenticated) {
+            html += `<button class="delete-btn" onclick="removeGroupSubmission('${group.id}', ${index})">Remove Group</button>`;
+          } else {
+            html += `<button class="delete-btn admin-only" disabled>Remove Group</button>`;
+          }
+          
+          html += `</div>`;
+        });
+        container.innerHTML = html;
+      }
+    })
+    .catch((error) => {
+      console.error("Error loading submissions:", error);
+      document.getElementById("submissions-container").innerHTML = 
+        `<div class="error">Error loading submissions: ${error.message}. Please try again.</div>`;
+    });
+}
+
+/**************************************
+ * Projects Functionality
+ **************************************/
+function initProjects() {
+  selectedCategories = [];
+  selectedSkillLevels = [];
+  selectedTechnologies = [];
+  searchTerm = "";
+  selectedProject = null;
+
+  populateFilterOptions();
+  document.getElementById("search-input").addEventListener("input", handleSearch);
+  renderProjectList();
+}
+
+function populateFilterOptions() {
+  // Categories
+  const catContainer = document.getElementById("category-filters");
+  catContainer.innerHTML = "";
+  categoriesList.forEach(function (category) {
+    const option = document.createElement("div");
+    option.className = "filter-option";
+    option.innerHTML = `
+      <input type="checkbox" id="category-${category.id}" data-category="${category.id}">
+      <label for="category-${category.id}">
+        <span class="category-icon">${category.icon}</span>
+        ${category.name}
+      </label>
+    `;
+    catContainer.appendChild(option);
+    const checkbox = option.querySelector(`#category-${category.id}`);
+    checkbox.addEventListener("change", function () {
+      toggleCategory(category.id);
+    });
+  });
+
+  // Skill Levels
+  const skillContainer = document.getElementById("skill-filters");
+  skillContainer.innerHTML = "";
+  skillLevelsList.forEach(function (level) {
+    const option = document.createElement("div");
+    option.className = "filter-option";
+    option.innerHTML = `
+      <input type="checkbox" id="skill-${level.id}" data-skill="${level.id}">
+      <label for="skill-${level.id}">${level.name}</label>
+    `;
+    skillContainer.appendChild(option);
+    const checkbox = option.querySelector(`#skill-${level.id}`);
+    checkbox.addEventListener("change", function () {
+      toggleSkillLevel(level.id);
+    });
+  });
+
+  // Technologies
+  const techContainer = document.getElementById("tech-filters");
+  techContainer.innerHTML = "";
+  technologiesList.forEach(function (tech) {
+    const option = document.createElement("div");
+    option.className = "filter-option";
+    option.innerHTML = `
+      <input type="checkbox" id="tech-${tech.id}" data-tech="${tech.id}">
+      <label for="tech-${tech.id}">${tech.name}</label>
+    `;
+    techContainer.appendChild(option);
+    const checkbox = option.querySelector(`#tech-${tech.id}`);
+    checkbox.addEventListener("change", function () {
+      toggleTechnology(tech.id);
+    });
+  });
+}
+
+function handleSearch(e) {
+  searchTerm = e.target.value.toLowerCase();
+  renderProjectList();
+}
+
+function toggleCategory(categoryId) {
+  if (selectedCategories.includes(categoryId)) {
+    selectedCategories = selectedCategories.filter(function (id) {
+      return id !== categoryId;
+    });
+  } else {
+    selectedCategories.push(categoryId);
+  }
+  renderProjectList();
+}
+
+function toggleSkillLevel(skillLevelId) {
+  if (selectedSkillLevels.includes(skillLevelId)) {
+    selectedSkillLevels = selectedSkillLevels.filter(function (id) {
+      return id !== skillLevelId;
+    });
+  } else {
+    selectedSkillLevels.push(skillLevelId);
+  }
+  renderProjectList();
+}
+
+function toggleTechnology(technologyId) {
+  if (selectedTechnologies.includes(technologyId)) {
+    selectedTechnologies = selectedTechnologies.filter(function (id) {
+      return id !== technologyId;
+    });
+  } else {
+    selectedTechnologies.push(technologyId);
+  }
+  renderProjectList();
+}
+
+function filterProjects() {
+  let filtered = getAvailableProjects(); // Only show available projects
+  
+  if (searchTerm) {
+    filtered = filtered.filter(function (project) {
+      return (
+        project.title.toLowerCase().includes(searchTerm) ||
+        project.description.toLowerCase().includes(searchTerm)
+      );
+    });
+  }
+  if (selectedCategories.length > 0) {
+    filtered = filtered.filter(function (project) {
+      return selectedCategories.includes(project.category);
+    });
+  }
+  if (selectedSkillLevels.length > 0) {
+    filtered = filtered.filter(function (project) {
+      return selectedSkillLevels.includes(project.skillLevel);
+    });
+  }
+  if (selectedTechnologies.length > 0) {
+    filtered = filtered.filter(function (project) {
+      return project.technologies.some(function (tech) {
+        return selectedTechnologies.includes(tech);
+      });
+    });
+  }
+  return filtered;
+}
+
+function renderProjectList() {
+  if (selectedProject) {
+    renderProjectDetails();
+    return;
+  }
+  const container = document.getElementById("project-container");
+  container.innerHTML = "";
+  const filteredProjects = filterProjects();
+
+  const listHeader = document.createElement("div");
+  listHeader.className = "list-header";
+  const totalProjects = projects.length;
+  const availableProjects = filteredProjects.length;
+  const takenProjects = totalProjects - getAvailableProjects().length;
+  
+  listHeader.innerHTML = `
+    <h2>Available Projects (${availableProjects} available, ${takenProjects} taken)</h2>
+  `;
+  container.appendChild(listHeader);
+
+  filteredProjects.forEach(function (project) {
+    const card = document.createElement("div");
+    card.className = "project-card";
+    const cardContent = document.createElement("div");
+    cardContent.className = "card-content";
+
+    const projectTitle = document.createElement("h3");
+    projectTitle.className = "project-title";
+    projectTitle.textContent = project.title;
+
+    const projectDesc = document.createElement("p");
+    projectDesc.className = "project-description";
+    projectDesc.textContent = project.description;
+
+    const tagsDiv = document.createElement("div");
+    tagsDiv.className = "tags";
+    project.techNames.forEach(function (techName) {
+      const tag = document.createElement("span");
+      tag.className = "tag";
+      tag.textContent = techName;
+      tagsDiv.appendChild(tag);
+    });
+
+    const cardFooter = document.createElement("div");
+    cardFooter.className = "card-footer";
+
+    const metaDiv = document.createElement("div");
+    metaDiv.className = "metadata";
+    const resourceMeta = document.createElement("div");
+    resourceMeta.className = "meta-tag resources";
+    resourceMeta.innerHTML = `<span style="margin-right:4px;">📚</span>${project.resources.length} Resources`;
+    metaDiv.appendChild(resourceMeta);
+
+    const skillMeta = document.createElement("div");
+    skillMeta.className = `meta-tag ${project.skillLevel}`;
+    skillMeta.textContent =
+      project.skillLevel.charAt(0).toUpperCase() + project.skillLevel.slice(1);
+    metaDiv.appendChild(skillMeta);
+
+    cardFooter.appendChild(metaDiv);
+
+    const viewButton = document.createElement("button");
+    viewButton.className = "view-btn";
+    viewButton.textContent = "View Details";
+    viewButton.addEventListener("click", function () {
+      selectedProject = project;
+      renderProjectList();
+    });
+    cardFooter.appendChild(viewButton);
+
+    cardContent.appendChild(projectTitle);
+    cardContent.appendChild(projectDesc);
+    cardContent.appendChild(tagsDiv);
+    cardContent.appendChild(cardFooter);
+    card.appendChild(cardContent);
+    container.appendChild(card);
+  });
+
+  if (filteredProjects.length === 0) {
+    const noProjectsDiv = document.createElement("div");
+    noProjectsDiv.className = "no-projects";
+    const totalAvailable = getAvailableProjects().length;
+    if (totalAvailable === 0) {
+      noProjectsDiv.innerHTML = "<p>🎉 All projects have been selected! No projects are currently available.</p>";
+    } else {
+      noProjectsDiv.innerHTML = "<p>No projects match your current filters. Try adjusting your criteria to see available projects.</p>";
+    }
+    container.appendChild(noProjectsDiv);
+  }
+}
+
+function renderProjectDetails() {
+  const container = document.getElementById("project-container");
+  container.innerHTML = "";
+  const detailsDiv = document.createElement("div");
+  detailsDiv.className = "project-details";
+
+  const detailsHeader = document.createElement("div");
+  detailsHeader.className = "details-header";
+
+  const title = document.createElement("h2");
+  title.className = "details-title";
+  title.textContent = selectedProject.title;
+
+  const backButton = document.createElement("button");
+  backButton.className = "back-btn";
+  backButton.textContent = "Back to List";
+  backButton.addEventListener("click", function () {
+    selectedProject = null;
+    renderProjectList();
+  });
+
+  detailsHeader.appendChild(title);
+  detailsHeader.appendChild(backButton);
+  detailsDiv.appendChild(detailsHeader);
+
+  const statsDiv = document.createElement("div");
+  statsDiv.className = "project-stats";
+
+  const stat1 = document.createElement("div");
+  stat1.className = "stat-card";
+  stat1.innerHTML = `<div class="stat-title">Estimated Time</div><div>${selectedProject.estimatedTime}</div>`;
+
+  const stat2 = document.createElement("div");
+  stat2.className = "stat-card";
+  stat2.innerHTML = `<div class="stat-title">Complexity</div><div>${selectedProject.complexity}</div>`;
+
+  const stat3 = document.createElement("div");
+  stat3.className = "stat-card";
+  stat3.innerHTML = `<div class="stat-title">UI Component</div><div>${selectedProject.uiComponent ? "Yes" : "No"}</div>`;
+
+  statsDiv.appendChild(stat1);
+  statsDiv.appendChild(stat2);
+  statsDiv.appendChild(stat3);
+  detailsDiv.appendChild(statsDiv);
+
+  // Detailed description section
+  const descSection = document.createElement("div");
+  descSection.className = "details-section";
+  const descHeading = document.createElement("h3");
+  descHeading.textContent = "Description";
+  const descParagraph = document.createElement("p");
+  descParagraph.textContent =
+    selectedProject.detailedDescription || selectedProject.description;
+  descSection.appendChild(descHeading);
+  descSection.appendChild(descParagraph);
+  detailsDiv.appendChild(descSection);
+
+  // Contribution suggestions (if any)
+  if (selectedProject.contributionSuggestions) {
+    const contribSection = document.createElement("div");
+    contribSection.className = "details-section";
+    const contribHeading = document.createElement("h3");
+    contribHeading.textContent = "Contribution Suggestions";
+    const contribParagraph = document.createElement("p");
+    contribParagraph.textContent = selectedProject.contributionSuggestions;
+    contribSection.appendChild(contribHeading);
+    contribSection.appendChild(contribParagraph);
+    detailsDiv.appendChild(contribSection);
+  }
+
+  // Prerequisites
+  if (selectedProject.prerequisites && selectedProject.prerequisites.length > 0) {
+    const prereqSection = document.createElement("div");
+    prereqSection.className = "details-section";
+    const prereqHeading = document.createElement("h3");
+    prereqHeading.textContent = "Prerequisites";
+    prereqSection.appendChild(prereqHeading);
+    const prereqList = document.createElement("ul");
+    selectedProject.prerequisites.forEach(function (prereq) {
+      const li = document.createElement("li");
+      li.textContent = prereq;
+      prereqList.appendChild(li);
+    });
+    prereqSection.appendChild(prereqList);
+    detailsDiv.appendChild(prereqSection);
+  }
+
+  // Resources
+  if (selectedProject.resources && selectedProject.resources.length > 0) {
+    const resourceSection = document.createElement("div");
+    resourceSection.className = "details-section";
+    const resourceHeading = document.createElement("h3");
+    resourceHeading.textContent = "Resources";
+    resourceSection.appendChild(resourceHeading);
+    const resourceList = document.createElement("ul");
+    selectedProject.resources.forEach(function (resource) {
+      const li = document.createElement("li");
+      li.innerHTML = `<a href="${resource.url}" target="_blank">${resource.name}</a>`;
+      resourceList.appendChild(li);
+    });
+    resourceSection.appendChild(resourceList);
+    detailsDiv.appendChild(resourceSection);
+  }
+
+  // Research Articles
+  if (selectedProject.researchArticles && selectedProject.researchArticles.length > 0) {
+    const researchSection = document.createElement("div");
+    researchSection.className = "details-section";
+    const researchHeading = document.createElement("h3");
+    researchHeading.textContent = "Research Articles";
+    researchSection.appendChild(researchHeading);
+    const researchList = document.createElement("ul");
+    selectedProject.researchArticles.forEach(function (article) {
+      const li = document.createElement("li");
+      li.innerHTML = `<a href="${article.url}" target="_blank">${article.name}</a>`;
+      researchList.appendChild(li);
+    });
+    researchSection.appendChild(researchList);
+    detailsDiv.appendChild(researchSection);
+  }
+
+  // Research Report Structure
+  const reportSection = document.createElement("div");
+  reportSection.className = "details-section";
+  const reportHeading = document.createElement("h3");
+  reportHeading.textContent = "Research Report Structure & Guidelines";
+  reportSection.appendChild(reportHeading);
+  const reportList = document.createElement("ul");
+  const reportStructure = [
+    {
+      section: "Research Questions",
+      hint: "Define clear and focused questions. Identify the problem you are addressing, the gaps in existing research, and the objectives of your study."
+    },
+    {
+      section: "Abstract",
+      hint: "Summarize your entire project in 150-250 words. Include the problem, methods, key results, and contributions."
+    },
+    {
+      section: "Introduction",
+      hint: "Provide background on your topic, explain its importance, and state your research questions. Introduce the structure of your report."
+    },
+    {
+      section: "Literature Review",
+      hint: "Review existing research and theories relevant to your topic. Highlight the gaps your research aims to fill."
+    },
+    {
+      section: "Methodology",
+      hint: "Describe your research methods and approaches in detail. Explain data collection, analysis techniques, and any models used."
+    },
+    {
+      section: "Implementation",
+      hint: "Detail your system design, tools used, and step-by-step development process. Include diagrams or code snippets as needed."
+    },
+    {
+      section: "Results and Analysis",
+      hint: "Present your findings using graphs, tables, and statistical metrics. Compare your results with previous studies."
+    },
+    {
+      section: "Testing and Evaluation",
+      hint: "Describe your testing methodologies including unit tests, integration tests, and user testing. Discuss performance and limitations."
+    },
+    {
+      section: "Graphical User Interface (GUI)",
+      hint: "Explain your UI design and usability features. Include screenshots and discuss how the interface supports the overall system."
+    },
+    {
+      section: "Conclusion and Future Work",
+      hint: "Summarize your contributions, discuss the limitations of your work, and propose directions for future research."
+    }
+  ];
+  reportStructure.forEach(function (item) {
+    const li = document.createElement("li");
+    li.innerHTML = `<strong>${item.section}:</strong> ${item.hint}`;
+    reportList.appendChild(li);
+  });
+  reportSection.appendChild(reportList);
+  detailsDiv.appendChild(reportSection);
+
+  // "Select This Project" button to open the group formation modal
+  const selectBtn = document.createElement("button");
+  selectBtn.className = "select-project-btn";
+  selectBtn.textContent = "Select This Project";
+  selectBtn.addEventListener("click", openContactForm);
+  detailsDiv.appendChild(selectBtn);
+
+  container.appendChild(detailsDiv);
+}
+
+/**************************************
+ * Modal and Group Form Handling
+ **************************************/
+function openContactForm() {
+  if (!selectedProject) {
+    console.error("No project selected!");
+    return;
+  }
+  
+  // Check if project is still available
+  if (!isProjectAvailable(selectedProject.title)) {
+    showMessage("This project has already been selected by another group. Please choose a different project.", "error");
+    selectedProject = null;
+    renderProjectList();
+    return;
+  }
+  
+  // Pre-fill the project name field with the selected project title
+  document.getElementById("project-name").value = selectedProject.title;
+  
+  // Show the modal
+  document.getElementById("group-form-modal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("group-form-modal").style.display = "none";
+  document.getElementById("group-form").reset();
+}
+
+// Close modal when clicking outside modal content
+window.addEventListener("click", function (event) {
+  const modal = document.getElementById("group-form-modal");
+  const adminModal = document.getElementById("admin-login-modal");
+  if (event.target === modal) {
+    closeModal();
+  }
+  if (event.target === adminModal) {
+    closeAdminModal();
+  }
+});
+
+// Close button event
+document.querySelector("#group-form-modal .close").addEventListener("click", closeModal);
+
+// Handle group formation form submission with Firebase
+document.getElementById("group-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const projectName = document.getElementById("project-name").value;
+  
+  // Collect group members info
+  const groupMembers = [];
+  for (let i = 1; i <= 5; i++) {
+    const nameVal = document.getElementById(`member${i}-name`).value.trim();
+    const idVal = document.getElementById(`member${i}-id`).value.trim();
+    if (i === 1) {
+      if (nameVal === "" || idVal === "") {
+        alert("Member 1 is required with both name and ID.");
+        return;
+      } else {
+        groupMembers.push({ name: nameVal, studentId: idVal });
+      }
+    } else {
+      if (nameVal !== "" && idVal !== "") {
+        groupMembers.push({ name: nameVal, studentId: idVal });
+      }
+    }
+  }
+
+  // Final check before submitting - ensure project is still available
+  if (!isProjectAvailable(projectName)) {
+    showMessage("This project has already been selected by another group while you were filling the form. Please choose a different project.", "error");
+    closeModal();
+    selectedProject = null;
+    renderProjectList();
+    return;
+  }
+
+  // Create submission object
+  const submission = {
+    projectName: projectName,
+    groupName: `Group for ${projectName}`,
+    groupMembers: groupMembers,
+    timestamp: new Date().toISOString()
+  };
+
+  // Show loading indicator
+  const submitButton = this.querySelector('button[type="submit"]');
+  const originalText = submitButton.textContent;
+  submitButton.disabled = true;
+  submitButton.textContent = "Submitting...";
+
+  // Save to Firebase
+  saveSubmissionToFirebase(submission)
+    .then((docRef) => {
+      // Also save to sessionStorage as a backup
+      submission.id = docRef.id; // Add the Firebase document ID
+      groupSubmissions.push(submission);
+      sessionStorage.setItem("groupSubmissions", JSON.stringify(groupSubmissions));
+      
+      showMessage("Your group has been formed and saved successfully!", "success");
+      closeModal();
+      
+      // Refresh project list to remove the selected project
+      selectedProject = null;
+      if (document.getElementById("tab-projects").classList.contains("active")) {
+        renderProjectList();
+      }
+    })
+    .catch((error) => {
+      console.error("Error saving to Firebase:", error);
+      showMessage("There was an error submitting your group. Please try again.", "error");
+    })
+    .finally(() => {
+      // Restore button
+      submitButton.disabled = false;
+      submitButton.textContent = originalText;
+    });
+});
+
+/**************************************
+* Group Removal Function (Admin Only)
+**************************************/
+function removeGroupSubmission(submissionId, index) {
+  if (!isAdminAuthenticated) {
+    showMessage("Only administrators can remove group submissions.", "error");
+    return;
+  }
+
+  if (!confirm("Are you sure you want to remove this group submission?")) {
+    return;
+  }
+
+  // Show removal in progress
+  const deleteButton = event.target;
+  deleteButton.disabled = true;
+  deleteButton.textContent = "Removing...";
+
+  // Delete from Firebase
+  deleteSubmissionFromFirebase(submissionId)
+    .then(() => {
+      // Also update local data
+      groupSubmissions.splice(index, 1);
+      sessionStorage.setItem("groupSubmissions", JSON.stringify(groupSubmissions));
+      
+      showMessage("Group submission removed successfully.", "success");
+      
+      // Refresh both views to show the project as available again
+      if (document.getElementById("tab-projects").classList.contains("active")) {
+        renderProjectList();
+      } else {
+        renderSubmissionsView();
+      }
+    })
+    .catch((error) => {
+      console.error("Error removing submission:", error);
+      showMessage("Error removing submission: " + error.message, "error");
+      deleteButton.disabled = false;
+      deleteButton.textContent = "Remove Group";
+    });
+}
+
+/**************************************
+* Export Group Submissions as CSV
+**************************************/
+function exportSubmissions() {
+  if (groupSubmissions.length === 0) {
+    showMessage("No submissions to export.", "error");
+    return;
+  }
+  
+  let csvContent = "data:text/csv;charset=utf-8,";
+  csvContent += "Project Name,Group Name,Member 1,Member 1 ID,Member 2,Member 2 ID,Member 3,Member 3 ID,Member 4,Member 4 ID,Member 5,Member 5 ID,Timestamp\n";
+
+  groupSubmissions.forEach(function (submission) {
+    const row = [];
+    row.push('"' + submission.projectName + '"');
+    row.push('"' + (submission.groupName || `Group for ${submission.projectName}`) + '"');
+    for (let i = 0; i < 5; i++) {
+      if (submission.groupMembers[i]) {
+        row.push('"' + submission.groupMembers[i].name + '"');
+        row.push('"' + submission.groupMembers[i].studentId + '"');
+      } else {
+        row.push('""');
+        row.push('""');
+      }
+    }
+    row.push('"' + new Date(submission.timestamp).toLocaleString() + '"');
+    csvContent += row.join(",") + "\n";
+  });
+
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", "group_submissions.csv");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  
+  showMessage("CSV file downloaded successfully!", "success");
+}
+    </script>
+  </body>
+</html>
