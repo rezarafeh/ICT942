@@ -1313,8 +1313,273 @@ const projects = [
     "complexity": "Medium",
     "uiComponent": true
   },
+  
   {
     "id": 5,
+    "title": "Threat Intelligence Aggregator",
+    "category": "threat_intel",
+    "categoryName": "Threat Intelligence",
+    "skillLevel": "intermediate",
+    "technologies": ["python", "api", "visualization"],
+    "techNames": ["Python", "REST API", "D3.js"],
+    "description": "Aggregate and visualize threat intelligence feeds.",
+    "detailedDescription": "Develop a system that pulls in data from multiple threat intel feeds (e.g., MISP, AlienVault OTX), normalizes the data, and visualizes it in a dashboard.",
+    "contributionSuggestions": "Implement feed deduplication and tagging. Add drill-down views for specific indicators.",
+    "prerequisites": ["Python", "Basic cybersecurity concepts", "APIs"],
+    "resources": [
+      { "name": "OTX API", "url": "https://otx.alienvault.com/api" }
+    ],
+    "researchArticles": [
+      {
+        "name": "Threat Intelligence Platforms",
+        "url": "https://ieeexplore.ieee.org/document/8666431"
+      }
+    ],
+    "estimatedTime": "2-3 months",
+    "complexity": "Medium",
+    "uiComponent": true
+  },
+  {
+    "id": 6,
+    "title": "Honeypot Deployment Automation",
+    "category": "infrastructure",
+    "categoryName": "Network Security",
+    "skillLevel": "advanced",
+    "technologies": ["docker", "devops", "linux"],
+    "techNames": ["Docker", "Ansible", "Kippo"],
+    "description": "Automate honeypot deployment and logging.",
+    "detailedDescription": "Use Docker Compose or Ansible to set up and manage honeypots like Cowrie or Dionaea. Collect and store attacker data centrally.",
+    "contributionSuggestions": "Automate multi-host deployment and alerting pipeline.",
+    "prerequisites": ["Linux basics", "Docker", "Networking"],
+    "resources": [
+      { "name": "Cowrie Honeypot", "url": "https://github.com/cowrie/cowrie" }
+    ],
+    "researchArticles": [
+      {
+        "name": "Automated Honeypot Frameworks",
+        "url": "https://doi.org/10.1145/3372297.3417883"
+      }
+    ],
+    "estimatedTime": "3 months",
+    "complexity": "High",
+    "uiComponent": false
+  },
+  {
+    "id": 7,
+    "title": "Phishing Email Detector with LLM",
+    "category": "email_security",
+    "categoryName": "Email Security",
+    "skillLevel": "advanced",
+    "technologies": ["nlp", "llm", "security"],
+    "techNames": ["Transformers", "Hugging Face", "Python"],
+    "description": "Use LLMs to detect phishing in email content.",
+    "detailedDescription": "Fine-tune a pre-trained transformer to classify phishing emails using textual and structural email features.",
+    "contributionSuggestions": "Test zero-shot vs fine-tuned LLMs. Build a basic alerting interface.",
+    "prerequisites": ["Python", "NLP", "Cybersecurity basics"],
+    "resources": [
+      { "name": "Enron Dataset", "url": "https://www.cs.cmu.edu/~enron/" }
+    ],
+    "researchArticles": [
+      {
+        "name": "LLMs for Phishing Detection",
+        "url": "https://arxiv.org/abs/2301.08468"
+      }
+    ],
+    "estimatedTime": "2-3 months",
+    "complexity": "High",
+    "uiComponent": true
+  },
+  {
+    "id": 8,
+    "title": "Web App Vulnerability Scanner",
+    "category": "web_security",
+    "categoryName": "Web Security",
+    "skillLevel": "intermediate",
+    "technologies": ["owasp", "python", "automation"],
+    "techNames": ["OWASP ZAP", "Python", "Requests"],
+    "description": "Scan web apps for OWASP Top 10 issues.",
+    "detailedDescription": "Build a tool that automates scanning of web apps using OWASP ZAP APIs and generates simple risk reports.",
+    "contributionSuggestions": "Add rule-based exclusions and scheduler for weekly scans.",
+    "prerequisites": ["Python", "HTTP basics", "Security testing"],
+    "resources": [
+      { "name": "OWASP ZAP API", "url": "https://www.zaproxy.org/docs/api/" }
+    ],
+    "researchArticles": [
+      {
+        "name": "Web App Security Testing Tools",
+        "url": "https://ieeexplore.ieee.org/document/7905005"
+      }
+    ],
+    "estimatedTime": "1-2 months",
+    "complexity": "Medium",
+    "uiComponent": true
+  },
+  {
+    "id": 9,
+    "title": "Blockchain-based Access Control",
+    "category": "blockchain",
+    "categoryName": "IoT & Blockchain",
+    "skillLevel": "advanced",
+    "technologies": ["solidity", "iot", "web3"],
+    "techNames": ["Ethereum", "Solidity", "MetaMask"],
+    "description": "Use smart contracts to enforce access rules.",
+    "detailedDescription": "Design a smart contract system to manage access control to IoT devices or resources based on blockchain credentials.",
+    "contributionSuggestions": "Test with MetaMask and simulate revocation logic.",
+    "prerequisites": ["Blockchain basics", "IoT", "Solidity"],
+    "resources": [
+      { "name": "Remix IDE", "url": "https://remix.ethereum.org/" }
+    ],
+    "researchArticles": [
+      {
+        "name": "Blockchain in Access Control",
+        "url": "https://www.sciencedirect.com/science/article/pii/S1389128620303835"
+      }
+    ],
+    "estimatedTime": "3-4 months",
+    "complexity": "High",
+    "uiComponent": true
+  },
+  {
+    "id": 10,
+    "title": "Log4j Exploitation Simulator",
+    "category": "vulnerability",
+    "categoryName": "Application Security",
+    "skillLevel": "beginner",
+    "technologies": ["docker", "java", "logging"],
+    "techNames": ["Docker", "Java", "Log4j"],
+    "description": "Simulate the Log4Shell exploit in a safe lab.",
+    "detailedDescription": "Build a controlled lab that demonstrates Log4j vulnerabilities and tracks exploit payloads using containers.",
+    "contributionSuggestions": "Visualize logs and blocked attempts via dashboard.",
+    "prerequisites": ["Java", "Log4j", "Docker"],
+    "resources": [
+      {
+        "name": "Log4Shell Demo Repo",
+        "url": "https://github.com/christophetd/log4shell-vulnerable-app"
+      }
+    ],
+    "researchArticles": [
+      {
+        "name": "Log4j Vulnerability Explained",
+        "url": "https://www.ncsc.gov.uk/news/log4j-vulnerability"
+      }
+    ],
+    "estimatedTime": "1 month",
+    "complexity": "Low",
+    "uiComponent": true
+  },
+  {
+    "id": 11,
+    "title": "Password Cracking with GPUs",
+    "category": "passwords",
+    "categoryName": "Authentication & Access",
+    "skillLevel": "advanced",
+    "technologies": ["hashcat", "gpu", "benchmarking"],
+    "techNames": ["Hashcat", "NVIDIA CUDA", "Linux"],
+    "description": "Evaluate password strength using GPU tools.",
+    "detailedDescription": "Use Hashcat with GPU acceleration to benchmark different hash algorithms and password strengths.",
+    "contributionSuggestions": "Compare cracking times by complexity and hash type.",
+    "prerequisites": ["Linux", "Hashcat", "Password hashing"],
+    "resources": [
+      {
+        "name": "Hashcat Docs",
+        "url": "https://hashcat.net/wiki/"
+      }
+    ],
+    "researchArticles": [
+      {
+        "name": "Password Cracking Techniques",
+        "url": "https://ieeexplore.ieee.org/document/9269930"
+      }
+    ],
+    "estimatedTime": "2 months",
+    "complexity": "High",
+    "uiComponent": false
+  },
+  {
+    "id": 12,
+    "title": "Secure File Sharing Platform",
+    "category": "privacy",
+    "categoryName": "Data Security",
+    "skillLevel": "intermediate",
+    "technologies": ["web", "crypto", "audit"],
+    "techNames": ["Node.js", "AES", "MongoDB"],
+    "description": "Build a secure and auditable file-sharing app.",
+    "detailedDescription": "Implement a web-based platform to upload/download files with encrypted storage and user-level access logging.",
+    "contributionSuggestions": "Add 2FA and file-sharing expiration controls.",
+    "prerequisites": ["JavaScript", "Cryptography", "Web dev"],
+    "resources": [
+      { "name": "CryptoJS", "url": "https://github.com/brix/crypto-js" }
+    ],
+    "researchArticles": [
+      {
+        "name": "Encrypted File Storage Designs",
+        "url": "https://ieeexplore.ieee.org/document/8035262"
+      }
+    ],
+    "estimatedTime": "2-3 months",
+    "complexity": "Medium",
+    "uiComponent": true
+  },
+  {
+    "id": 13,
+    "title": "Browser Extension for Privacy",
+    "category": "privacy",
+    "categoryName": "Privacy Tools",
+    "skillLevel": "beginner",
+    "technologies": ["js", "extension", "tracking"],
+    "techNames": ["JavaScript", "WebExtensions API", "Manifest v3"],
+    "description": "Create a privacy-enhancing browser extension.",
+    "detailedDescription": "Build a Chrome/Firefox extension that blocks trackers, fingerprinting scripts, and ads. Allow user configuration.",
+    "contributionSuggestions": "Add real-time blocking stats and dark mode UI.",
+    "prerequisites": ["JavaScript", "Browser APIs", "Privacy concepts"],
+    "resources": [
+      {
+        "name": "WebExtensions Guide",
+        "url": "https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions"
+      }
+    ],
+    "researchArticles": [
+      {
+        "name": "Tracker Blocking in Browsers",
+        "url": "https://www.usenix.org/system/files/conference/usenixsecurity19/sec19-mayer.pdf"
+      }
+    ],
+    "estimatedTime": "1-2 months",
+    "complexity": "Low",
+    "uiComponent": true
+  },
+  {
+    "id": 14,
+    "title": "ML-based Malware Classification",
+    "category": "malware",
+    "categoryName": "Malware Analysis",
+    "skillLevel": "advanced",
+    "technologies": ["ml", "pandas", "sklearn"],
+    "techNames": ["Scikit-learn", "Python", "PEfile"],
+    "description": "Use ML to classify malware samples.",
+    "detailedDescription": "Train an ML model to classify static malware samples using feature engineering on executable metadata (e.g., imports, strings).",
+    "contributionSuggestions": "Compare classifiers and add visualization of decision trees.",
+    "prerequisites": ["Python", "ML", "Basic malware analysis"],
+    "resources": [
+      {
+        "name": "Microsoft Malware Dataset",
+        "url": "https://www.kaggle.com/c/malware-classification"
+      }
+    ],
+    "researchArticles": [
+      {
+        "name": "Static Malware Detection with ML",
+        "url": "https://ieeexplore.ieee.org/document/9027856"
+      }
+    ],
+    "estimatedTime": "3 months",
+    "complexity": "High",
+    "uiComponent": true
+  },
+
+
+  {
+    "id": 15,
     "title": "Real-Time Threat Intelligence Aggregator",
     "category": "threat",
     "categoryName": "Threat Intelligence",
@@ -1356,7 +1621,8 @@ const projects = [
     "estimatedTime": "3-5 months",
     "complexity": "High",
     "uiComponent": true
-  }
+  },
+  
 ];
 
 const categoriesList = [
