@@ -1576,8 +1576,6 @@ const projects = [
     "complexity": "High",
     "uiComponent": true
   },
-
-
   {
     "id": 15,
     "title": "Real-Time Threat Intelligence Aggregator",
@@ -1622,6 +1620,118 @@ const projects = [
     "complexity": "High",
     "uiComponent": true
   },
+
+{
+  "id": 1001,
+  "title": "IoT Intrusion Detection with Raspberry Pi",
+  "category": "iot",
+  "categoryName": "IoT & Edge Security",
+  "skillLevel": "intermediate",
+  "technologies": ["python", "linux", "network"],
+  "techNames": ["Python", "Snort", "Raspberry Pi"],
+  "description": "Deploy a lightweight IDS using Raspberry Pi.",
+  "detailedDescription": "Use a Raspberry Pi to capture local network traffic and detect malicious activity using tools like Snort or Suricata.",
+  "contributionSuggestions": "Enhance alert rules and integrate simple alerting via email or Telegram bot.",
+  "prerequisites": ["Linux basics", "Networking", "Python scripting"],
+  "resources": [
+    { "name": "Snort on Raspberry Pi", "url": "https://docs.snort.org/" }
+  ],
+  "researchArticles": [
+    { "name": "Lightweight IDS on IoT Devices", "url": "https://ieeexplore.ieee.org/document/8993980" }
+  ],
+  "estimatedTime": "2-3 months",
+  "complexity": "Medium",
+  "uiComponent": false
+},
+{
+  "id": 1002,
+  "title": "Arduino-based Door Access Logger",
+  "category": "iot",
+  "categoryName": "IoT & Edge Security",
+  "skillLevel": "beginner",
+  "technologies": ["arduino", "sensors", "logging"],
+  "techNames": ["Arduino", "RFID", "EEPROM"],
+  "description": "Log physical access using RFID and Arduino.",
+  "detailedDescription": "Create a secure access control system using RFID tags and log all entries with timestamp on local storage.",
+  "contributionSuggestions": "Add LCD display for feedback and use RTC module for accurate timestamps.",
+  "prerequisites": ["Arduino basics", "C programming", "Digital electronics"],
+  "resources": [
+    { "name": "RFID Access Tutorial", "url": "https://lastminuteengineers.com/rfid-rc522-arduino-tutorial/" }
+  ],
+  "researchArticles": [
+    { "name": "Secure Physical Access Logging", "url": "https://doi.org/10.1109/ACCESS.2021.3071449" }
+  ],
+  "estimatedTime": "1-2 months",
+  "complexity": "Low",
+  "uiComponent": false
+},
+{
+  "id": 1003,
+  "title": "Smart Home Threat Simulation Platform",
+  "category": "iot",
+  "categoryName": "IoT & Edge Security",
+  "skillLevel": "advanced",
+  "technologies": ["raspberry_pi", "python", "iot"],
+  "techNames": ["Raspberry Pi", "MQTT", "Python"],
+  "description": "Simulate threats in a smart home testbed.",
+  "detailedDescription": "Design a testbed with multiple Raspberry Pis emulating smart home devices and simulate common IoT attacks like replay, spoofing, and DoS.",
+  "contributionSuggestions": "Build attack scenario playback scripts and monitor device behavior with logs.",
+  "prerequisites": ["IoT protocols", "Raspberry Pi setup", "Network security"],
+  "resources": [
+    { "name": "IoT Attack Simulation Tools", "url": "https://github.com/OWASP/IoTGoat" }
+  ],
+  "researchArticles": [
+    { "name": "IoT Threat Modeling", "url": "https://ieeexplore.ieee.org/document/9134962" }
+  ],
+  "estimatedTime": "3-4 months",
+  "complexity": "High",
+  "uiComponent": false
+},
+{
+  "id": 1004,
+  "title": "Environmental Sensor Tamper Detection",
+  "category": "iot",
+  "categoryName": "IoT & Edge Security",
+  "skillLevel": "intermediate",
+  "technologies": ["arduino", "sensors", "ml"],
+  "techNames": ["Arduino", "DHT11", "TinyML"],
+  "description": "Detect tampering in IoT environmental sensors.",
+  "detailedDescription": "Use Arduino and TinyML to detect abnormal patterns in temperature/humidity readings that may indicate tampering or spoofing.",
+  "contributionSuggestions": "Train and deploy a simple anomaly detector using edge ML models.",
+  "prerequisites": ["Arduino", "Basic ML", "Sensor calibration"],
+  "resources": [
+    { "name": "TinyML Guide", "url": "https://www.tensorflow.org/lite/microcontrollers" }
+  ],
+  "researchArticles": [
+    { "name": "Sensor Tamper Detection in IoT", "url": "https://www.sciencedirect.com/science/article/pii/S2352340921001806" }
+  ],
+  "estimatedTime": "2-3 months",
+  "complexity": "Medium",
+  "uiComponent": false
+},
+{
+  "id": 1005,
+  "title": "Wireless Surveillance Jamming Detector",
+  "category": "iot",
+  "categoryName": "IoT & Edge Security",
+  "skillLevel": "advanced",
+  "technologies": ["raspberry_pi", "sniffing", "radio"],
+  "techNames": ["Raspberry Pi", "RTL-SDR", "Python"],
+  "description": "Detect jamming or signal interference in surveillance feeds.",
+  "detailedDescription": "Use software-defined radio with Raspberry Pi to detect signal anomalies or potential jamming in wireless camera setups.",
+  "contributionSuggestions": "Implement spectral analysis dashboard and alert system.",
+  "prerequisites": ["Radio signals", "Python", "Networking"],
+  "resources": [
+    { "name": "RTL-SDR Tutorial", "url": "https://www.rtl-sdr.com/rtl-sdr-quick-start-guide/" }
+  ],
+  "researchArticles": [
+    { "name": "Jamming Detection in IoT", "url": "https://ieeexplore.ieee.org/document/8636033" }
+  ],
+  "estimatedTime": "3-4 months",
+  "complexity": "High",
+  "uiComponent": true
+}
+
   
 ];
 
